@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfff7;
+  --foreground: #123026;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Onest Variable", sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Onest Variable", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at top left, rgba(187, 247, 208, 0.34), transparent 32%),
+    radial-gradient(circle at right center, rgba(186, 230, 253, 0.22), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #fbfff7 45%, #f0fdf4 100%);
+}
+
+.ambient-orb {
+  position: absolute;
+  z-index: 0;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.55;
+}
+
+.ambient-orb-left {
+  left: -5rem;
+  top: 2rem;
+  height: 18rem;
+  width: 18rem;
+  background: rgba(16, 185, 129, 0.24);
+}
+
+.ambient-orb-right {
+  right: -4rem;
+  top: 5rem;
+  height: 16rem;
+  width: 16rem;
+  background: rgba(14, 165, 233, 0.18);
+}
+
+@keyframes ambient-leaf-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -18%, 0) rotate(0deg);
+  }
+
+  12% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(2.2rem, 55vh, 0) rotate(82deg);
+  }
+
+  88% {
+    opacity: 0.38;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-1.4rem, 118vh, 0) rotate(164deg);
+  }
+}
+
+.ambient-falling-leaf {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(0.3px);
+  animation-name: ambient-leaf-fall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-falling-leaf {
+    animation: none;
+    opacity: 0.12;
+    transform: translateY(40%);
+  }
+}
+
+@keyframes global-leaf-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -12vh, 0) rotate(0deg) scale(0.9);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  45% {
+    transform: translate3d(3.8rem, 48vh, 0) rotate(105deg) scale(1.03);
+  }
+
+  78% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-2.4rem, 112vh, 0) rotate(220deg) scale(0.96);
+  }
+}
+
+.global-falling-leaf {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(0.15px);
+  animation-name: global-leaf-fall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-falling-leaf {
+    animation: none;
+    opacity: 0;
+  }
+}
