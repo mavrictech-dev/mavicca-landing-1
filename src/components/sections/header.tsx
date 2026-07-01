@@ -13,7 +13,7 @@ export function Header() {
           className="flex shrink-0 items-center outline-none transition duration-300 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4"
         >
           <Image
-            src="/logo-orig.png"
+            src="/logo-completo.png"
             alt={siteContent.companyName}
             width={1515}
             height={502}

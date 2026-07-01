@@ -26,8 +26,6 @@ export function AboutSection() {
         />
       </div>
 
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#fff_0%,#fff_54%,rgba(255,255,255,0.82)_58%,rgba(255,255,255,0)_65%)]" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-20 bg-linear-to-t from-[#fbfdf8] to-transparent" />
       <div className="absolute left-8 top-28 -z-10 h-64 w-64 rounded-full bg-emerald-100/60 blur-3xl" />
       <SectionOrganicPattern density="soft" />
 
