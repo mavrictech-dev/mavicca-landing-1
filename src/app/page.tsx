@@ -9,7 +9,7 @@ import { ServicesSection } from "@/components/sections/services";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#fbfff7] text-emerald-950">
+    <div className="min-h-screen bg-[#fbfdf8] text-[#064118]">
       <Header />
       <AmbientFallingLeaves />
       <main className="pt-16 sm:pt-18 lg:pt-20">
@@ -19,7 +19,7 @@ export default function Home() {
         <ContactSection />
       </main>
 
-      <footer className="relative isolate overflow-hidden border-t border-emerald-100 bg-[#062b57] px-6 py-6 text-center text-sm text-emerald-100/70 lg:px-8 lg:text-lg">
+      <footer className="relative isolate overflow-hidden border-t border-emerald-100 bg-[#fbfdf8] px-6 py-6 text-center text-sm text-[#064118]/72 lg:px-8 lg:text-lg">
         <FooterOrganicPattern />
         <div className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-4">
           <p>© 2026 Mavicca. Todos los derechos reservados.</p>

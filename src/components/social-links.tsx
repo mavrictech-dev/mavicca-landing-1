@@ -61,7 +61,7 @@ export function SocialLinks() {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noreferrer" : undefined}
               aria-label={label}
-              className="inline-flex rounded-full p-1 text-current transition duration-300 hover:-translate-y-0.5 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-100 focus-visible:ring-offset-4 focus-visible:ring-offset-[#062b57]"
+              className="inline-flex rounded-full p-1 text-current transition duration-300 hover:-translate-y-0.5 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fbfdf8]"
             >
               <Icon />
             </a>

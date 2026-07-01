@@ -5,12 +5,12 @@ export function Header() {
   const navItems = [{ label: "Inicio", href: "#inicio" }, ...siteContent.nav];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-emerald-100/80 bg-[#fbfff7]/78 shadow-[0_10px_35px_rgba(20,83,45,0.10)] backdrop-blur-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-emerald-100/80 bg-[#fbfdf8]/78 shadow-lg shadow-green-950/10 backdrop-blur-2xl">
       <div className="flex h-16 w-full items-center justify-between px-10  sm:h-18 sm:px-20 lg:h-20 lg:px-40">
         <a
           href="#inicio"
           aria-label={`${siteContent.companyName} - volver al inicio`}
-          className="flex shrink-0 items-center outline-none transition duration-300 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-4"
+          className="flex shrink-0 items-center outline-none transition duration-300 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4"
         >
           <Image
             src="/logo-orig.png"
@@ -30,7 +30,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="relative text-sm font-black uppercase tracking-tight text-emerald-950 transition duration-300 after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-full after:origin-center after:scale-x-0 after:rounded-full after:bg-cyan-400 after:transition-transform after:duration-300 hover:-translate-y-0.5 hover:text-emerald-700 hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-4"
+              className="relative text-sm font-black uppercase tracking-tight text-[#064118] transition duration-300 after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-full after:origin-center after:scale-x-0 after:rounded-full after:bg-[#47a51f] after:transition-transform after:duration-300 hover:-translate-y-0.5 hover:text-[#2f7d15] hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4"
             >
               {item.label}
             </a>
@@ -41,7 +41,7 @@ export function Header() {
           href="https://wa.me/51999999999"
           target="_blank"
           rel="noreferrer"
-          className="group hidden items-center gap-2 rounded-full bg-green-700 px-4 py-2 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-green-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 focus-visible:ring-offset-4 sm:inline-flex"
+          className="group hidden items-center gap-2 rounded-full bg-[#47a51f] px-4 py-2 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#3d8f1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 sm:inline-flex"
         >
           <svg
             aria-hidden="true"

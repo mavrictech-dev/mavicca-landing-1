@@ -6,10 +6,10 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden bg-[#f4fff2] bg-cover bg-position-[62%_center] bg-no-repeat sm:min-h-[calc(100ssvh-3.5rem)] lg:min-h-[calc(100svh-5rem)] lg:bg-center"
+      className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden bg-[#fbfdf8] bg-cover bg-position-[62%_center] bg-no-repeat sm:min-h-[calc(100ssvh-3.5rem)] lg:min-h-[calc(100svh-5rem)] lg:bg-center"
       style={{ backgroundImage: "url('/bg-hero.png')" }}
     >
-      <div className="absolute inset-0 -z-10 bg-[#f4fff2]/16" />
+      <div className="absolute inset-0 -z-10 bg-[#fbfdf8]/16" />
       <div className="absolute inset-0 -z-10 bg-linear-to-r from-emerald-950/76 via-emerald-800/38 to-white/0" />
       <div className="absolute inset-0 -z-10 bg-linear-to-t from-emerald-900/24 via-transparent to-white/14" />
       <div className="absolute -left-24 top-24 -z-10 h-72 w-72 rounded-full bg-lime-300/20 blur-3xl" />
@@ -42,7 +42,7 @@ export function HeroSection() {
             <StaggerItem>
               <a
                 href="#servicios"
-                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-lime-300/70 bg-green-700 px-6 py-3.5 text-sm font-black text-white shadow-[0_12px_28px_rgba(21,128,61,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-green-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-200 focus-visible:ring-offset-4 focus-visible:ring-offset-emerald-950"
+                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-[#8dcf67] bg-[#47a51f] px-6 py-3.5 text-sm font-black text-white shadow-lg shadow-green-950/10 transition duration-300 hover:-translate-y-0.5 hover:bg-[#3d8f1a] hover:shadow-xl hover:shadow-green-950/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c7e6ae] focus-visible:ring-offset-4 focus-visible:ring-offset-emerald-950"
               >
                 <Leaf className="size-5 transition duration-300 group-hover:rotate-12" aria-hidden="true" />
                 Nuestros servicios
@@ -53,7 +53,7 @@ export function HeroSection() {
             <StaggerItem>
               <a
                 href="#contacto"
-                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-lime-200/90 bg-white/12 px-6 py-3.5 text-sm font-black text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:bg-white/18 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-200 focus-visible:ring-offset-4 focus-visible:ring-offset-emerald-950"
+                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-[#8dcf67] bg-[#47a51f] px-6 py-3.5 text-sm font-black text-white shadow-lg shadow-green-950/10 transition duration-300 hover:-translate-y-0.5 hover:bg-[#3d8f1a] hover:shadow-xl hover:shadow-green-950/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c7e6ae] focus-visible:ring-offset-4 focus-visible:ring-offset-emerald-950"
               >
                 <MessageCircle className="size-5 transition duration-300 group-hover:rotate-6" aria-hidden="true" />
                 Contáctanos
