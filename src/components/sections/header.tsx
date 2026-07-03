@@ -1,11 +1,53 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { siteContent } from "@/data/site";
 
 export function Header() {
+  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const tickingRef = useRef(false);
   const navItems = [{ label: "Inicio", href: "#inicio" }, ...siteContent.nav];
 
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+
+    const handleScroll = () => {
+      if (tickingRef.current) {
+        return;
+      }
+
+      tickingRef.current = true;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - lastScrollYRef.current;
+
+        if (currentScrollY < 32) {
+          setIsHeaderHidden(false);
+        } else if (scrollDelta > 8 && currentScrollY > 96) {
+          setIsHeaderHidden(true);
+        } else if (scrollDelta < -8) {
+          setIsHeaderHidden(false);
+        }
+
+        lastScrollYRef.current = currentScrollY;
+        tickingRef.current = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-emerald-100/80 bg-[#fbfdf8]/78 shadow-lg shadow-green-950/10 backdrop-blur-2xl">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 w-full border-b border-emerald-100/80 bg-[#fbfdf8]/78 shadow-lg shadow-green-950/10 backdrop-blur-2xl transition-[transform,opacity,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isHeaderHidden ? "pointer-events-none -translate-y-full opacity-0 shadow-none" : "translate-y-0 opacity-100"
+      }`}
+    >
       <div className="flex h-16 w-full items-center justify-between px-10  sm:h-18 sm:px-20 lg:h-20 lg:px-40">
         <a
           href="#inicio"
@@ -38,7 +80,7 @@ export function Header() {
         </nav>
 
         <a
-          href="https://wa.me/51999999999"
+          href={siteContent.contact.whatsappUrl}
           target="_blank"
           rel="noreferrer"
           className="group hidden items-center gap-2 rounded-full bg-[#47a51f] px-4 py-2 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#3d8f1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 sm:inline-flex"

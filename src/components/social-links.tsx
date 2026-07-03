@@ -43,11 +43,19 @@ function GmailIcon() {
 }
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/", Icon: LinkedinIcon },
-  { label: "Facebook", href: "https://www.facebook.com/", Icon: FacebookIcon },
-  { label: "Instagram", href: "https://www.instagram.com/", Icon: InstagramIcon },
-  { label: "WhatsApp", href: "https://wa.me/51995688777", Icon: WhatsAppIcon },
-  { label: "Gmail", href: "mailto:info@mavicca.com.pe", Icon: GmailIcon },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/mavicca-consultores-ambientales-s-a-c-s-12b2b734a/",
+    Icon: LinkedinIcon,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1LfRwjLEVX/",
+    Icon: FacebookIcon,
+  },
+  { label: "Instagram", href: "https://www.instagram.com/mavicca29", Icon: InstagramIcon },
+  { label: "WhatsApp", href: "https://wa.me/51984401703", Icon: WhatsAppIcon },
+  { label: "Gmail", href: "mailto:comercial@mavicca.com", Icon: GmailIcon },
 ] as const;
 
 export function SocialLinks() {
@@ -61,7 +69,7 @@ export function SocialLinks() {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noreferrer" : undefined}
               aria-label={label}
-              className="inline-flex rounded-full p-1 text-current transition duration-300 hover:-translate-y-0.5 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fbfdf8]"
+              className="inline-flex rounded-full p-1 text-current transition duration-300 hover:-translate-y-0.5 hover:text-[#9ed87a] hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#061f35]"
             >
               <Icon />
             </a>

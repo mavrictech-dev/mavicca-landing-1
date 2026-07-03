@@ -12,14 +12,14 @@ export default function Home() {
     <div className="min-h-screen bg-[#fbfdf8] text-[#064118]">
       <Header />
       <AmbientFallingLeaves />
-      <main className="pt-16 sm:pt-18 lg:pt-20">
+      <main>
         <HeroSection />
         <AboutSection />
         <ServicesSection />
         <ContactSection />
       </main>
 
-      <footer className="relative isolate overflow-hidden border-t border-emerald-100 bg-[#fbfdf8] px-6 py-6 text-center text-sm text-[#064118]/72 lg:px-8 lg:text-lg">
+      <footer className="relative isolate overflow-hidden border-t border-[#47a51f]/25 bg-[#061f35] px-6 py-7 text-center text-sm text-emerald-50/86 lg:px-8 lg:text-lg">
         <FooterOrganicPattern />
         <div className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-4">
           <p>© 2026 Mavicca. Todos los derechos reservados.</p>

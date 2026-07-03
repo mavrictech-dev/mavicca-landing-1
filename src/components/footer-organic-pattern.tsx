@@ -4,11 +4,11 @@
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(71,165,31,0.08),transparent_58%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(71,165,31,0.18),transparent_58%)]" />
 
       <svg
         viewBox="0 0 180 180"
-        className="absolute -left-8 -top-16 h-52 w-52 -rotate-12 text-[#47a51f]/10 blur-[0.5px]"
+        className="absolute -left-8 -top-16 h-52 w-52 -rotate-12 text-[#8ed169]/20 blur-[0.5px]"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
@@ -24,7 +24,7 @@
 
       <svg
         viewBox="0 0 160 260"
-        className="absolute -bottom-24 right-0 h-80 w-48 text-[#064118]/8 blur-[0.6px]"
+        className="absolute -bottom-24 right-0 h-80 w-48 text-[#9ed87a]/16 blur-[0.6px]"
         fill="currentColor"
       >
         <path
@@ -52,7 +52,7 @@
 
       <svg
         viewBox="0 0 120 120"
-        className="absolute left-[45%] top-1/2 hidden h-32 w-32 -translate-y-1/2 rotate-6 text-[#47a51f]/8 blur-[1px] sm:block"
+        className="absolute left-[45%] top-1/2 hidden h-32 w-32 -translate-y-1/2 rotate-6 text-[#9ed87a]/18 blur-[1px] sm:block"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
