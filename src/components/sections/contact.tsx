@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Leaf, Mail, MapPin, MessageCircle, Plus, Send, Sprout, X } from "lucide-react";
+import { Leaf, Mail, MapPin, Plus, Send, Sprout, X } from "lucide-react";
 import { MotionArticle, MotionForm, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { SectionOrganicPattern } from "@/components/section-organic-pattern";
 import { siteContent } from "@/data/site";
@@ -12,15 +12,52 @@ const serviceOptions = [
   "Otros",
 ] as const;
 
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className ?? "size-8"}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="M21 11.5a8.4 8.4 0 0 1-9 8.3 8.8 8.8 0 0 1-3.8-.9L3 20l1.4-4.4A8.2 8.2 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z" />
+      <path d="M8.8 8.5c.2 4 2.7 6.4 6.6 6.9" />
+    </svg>
+  );
+}
+
 export function ContactSection() {
   const { contact } = siteContent;
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isServiceListOpen, setIsServiceListOpen] = useState(false);
   const servicesSelectorRef = useRef<HTMLDivElement>(null);
+  const addressUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`;
   const contactItems = [
-    { label: "WhatsApp", value: contact.phone, Icon: MessageCircle, accent: true },
-    { label: "Correo", value: contact.email, Icon: Mail, accent: false },
-    { label: "Dirección", value: contact.address, Icon: MapPin, accent: false },
+    {
+      label: "WhatsApp",
+      value: contact.phone,
+      href: contact.whatsappUrl,
+      Icon: WhatsAppIcon,
+      accent: true,
+    },
+    {
+      label: "Correo",
+      value: contact.email,
+      href: `mailto:${contact.email}`,
+      Icon: Mail,
+      accent: false,
+    },
+    {
+      label: "Dirección",
+      value: contact.address,
+      href: addressUrl,
+      Icon: MapPin,
+      accent: false,
+    },
   ] as const;
 
   useEffect(() => {
@@ -116,17 +153,22 @@ export function ContactSection() {
               return (
                 <StaggerItem key={item.label}>
                   <MotionArticle index={index} className="group flex gap-5">
-                    <div className="grid size-14 shrink-0 place-items-center rounded-2xl border border-emerald-100 bg-white text-[#064118] shadow-lg shadow-green-950/10 transition duration-300 group-hover:bg-[#064118] group-hover:text-[#eff7e8]">
-                      <Icon className="size-8" strokeWidth={1.8} aria-hidden="true" />
-                    </div>
-                    <div className={`min-w-0 pb-6 ${index !== contactItems.length - 1 ? "border-b border-emerald-100" : ""}`}>
-                      <p className="text-lg font-black text-[#064118]">{item.label}</p>
-                      <p className={`mt-1 text-base font-semibold ${item.accent ? "text-[#47a51f]" : "text-[#064118]/76"}`}>
-                        {item.value}
-                      </p>
-                    </div>
-                  </MotionArticle>
-                </StaggerItem>
+                      <div className="grid size-14 shrink-0 place-items-center rounded-2xl border border-emerald-100 bg-white text-[#064118] shadow-lg shadow-green-950/10 transition duration-300 group-hover:bg-[#064118] group-hover:text-[#eff7e8]">
+                        <Icon className="size-8" strokeWidth={1.8} aria-hidden="true" />
+                      </div>
+                      <div className={`min-w-0 pb-6 ${index !== contactItems.length - 1 ? "border-b border-emerald-100" : ""}`}>
+                        <p className="text-lg font-black text-[#064118]">{item.label}</p>
+                        <a
+                          href={item.href}
+                          target={item.href.startsWith("http") ? "_blank" : undefined}
+                          rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                          className={`mt-1 inline-block text-base font-semibold transition duration-300 hover:text-[#2f7d15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-2 ${item.accent ? "text-[#47a51f]" : "text-[#064118]/76"}`}
+                        >
+                          {item.value}
+                        </a>
+                      </div>
+                    </MotionArticle>
+                  </StaggerItem>
               );
             })}
           </Stagger>
@@ -143,29 +185,33 @@ export function ContactSection() {
                 Servicios a consultar
               </span>
 
-              <div className="flex min-h-16 flex-wrap items-center gap-2 rounded-xl border border-emerald-100 bg-white px-4 py-3 transition focus-within:border-[#47a51f] focus-within:ring-4 focus-within:ring-[#47a51f]/15">
-                {selectedServices.length > 0 ? (
-                  selectedServices.map((service) => (
-                    <span
-                      key={service}
-                      className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white px-4 py-2 text-sm font-bold text-[#064118] shadow-sm shadow-green-950/5"
-                    >
-                      {service}
-                      <button
-                        type="button"
-                        onClick={() => removeService(service)}
-                        aria-label={`Quitar ${service}`}
-                        className="grid size-5 place-items-center rounded-full text-[#2f7d15] transition hover:bg-emerald-50 hover:text-[#064118] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f]"
-                      >
-                        <X className="size-3.5" aria-hidden="true" />
-                      </button>
-                    </span>
-                  ))
-                ) : (
-                  <span className="text-sm font-medium text-slate-500">
-                    Agrega uno o más servicios
-                  </span>
-                )}
+              <div className="flex h-16 items-start gap-3 rounded-xl border border-emerald-100 bg-white px-4 py-3 transition focus-within:border-[#47a51f] focus-within:ring-4 focus-within:ring-[#47a51f]/15">
+                <div className="h-10 flex-1 overflow-y-auto pr-1">
+                  <div className="flex flex-wrap gap-2">
+                    {selectedServices.length > 0 ? (
+                      selectedServices.map((service) => (
+                        <span
+                          key={service}
+                          className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white px-4 py-2 text-sm font-bold text-[#064118] shadow-sm shadow-green-950/5"
+                        >
+                          {service}
+                          <button
+                            type="button"
+                            onClick={() => removeService(service)}
+                            aria-label={`Quitar ${service}`}
+                            className="grid size-5 place-items-center rounded-full text-[#2f7d15] transition hover:bg-emerald-50 hover:text-[#064118] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f]"
+                          >
+                            <X className="size-3.5" aria-hidden="true" />
+                          </button>
+                        </span>
+                      ))
+                    ) : (
+                      <span className="inline-flex h-10 items-center text-sm font-medium text-slate-500">
+                        Agrega uno o más servicios
+                      </span>
+                    )}
+                  </div>
+                </div>
 
                 <button
                   type="button"
