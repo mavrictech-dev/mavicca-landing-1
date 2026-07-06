@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# landing1
 
-## Getting Started
+Landing corporativa para **Mavicca**, enfocada en consultoría ambiental, gestión ambiental y presentación de servicios.
 
-First, run the development server:
+## Estado actual
+
+Este repositorio ya no es un starter genérico de Next.js. Actualmente está en una etapa de **refinamiento / cierre visual** con contenido de marca, secciones del negocio, acciones de contacto e interacciones de servicios ya implementadas.
+
+## Qué incluye
+
+- Header fijo con navegación y CTA de WhatsApp
+- Hero con el posicionamiento de Mavicca
+- Sección “Quiénes somos”
+- Cards de misión y visión
+- Catálogo de servicios con cards y modal de detalle
+- Sección de contacto con acciones directas
+- Footer con redes sociales vinculadas
+
+## Stack tecnológico
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Lucide React
+
+## Ejecutar en local
+
+```bash
+npm install
+npm run dev
+```
+
+Abrir en `http://localhost:3000`
+
+## Scripts principales
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estructura del proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Ruta | Propósito |
+|---|---|
+| `src/app/page.tsx` | Composición principal de la landing |
+| `src/data/site.ts` | Fuente central de textos, servicios y datos de contacto |
+| `src/components/sections/header.tsx` | Header y CTA de WhatsApp |
+| `src/components/sections/hero.tsx` | Sección hero |
+| `src/components/sections/about.tsx` | Quiénes somos / misión / visión / pilares |
+| `src/components/sections/services.tsx` | Cards de servicios y modal |
+| `src/components/sections/contact.tsx` | Información de contacto y formulario |
+| `src/components/social-links.tsx` | Íconos y enlaces de redes en el footer |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fuentes de contenido
 
-## Learn More
+### `info.md`
+Se usa para:
+- perfil de la empresa
+- misión
+- visión
+- catálogo de servicios
+- sectores atendidos
 
-To learn more about Next.js, take a look at the following resources:
+### `redes.md`
+Se usa para:
+- Facebook
+- Instagram
+- LinkedIn
+- WhatsApp
+- Correo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notas de implementación actuales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- El contenido de la empresa ya fue adaptado para **Mavicca**.
+- La sección “Quiénes somos” ya muestra directamente la historia de la empresa dentro del layout.
+- La sección de servicios ya soporta resumen en card + detalle en modal.
+- Las acciones de contacto ya funcionan para:
+  - WhatsApp
+  - Correo
+  - Dirección (búsqueda en Google Maps)
+- El selector de servicios del formulario tiene altura controlada para no estirar el formulario.
+- El botón de WhatsApp del header se ve en desktop y mobile.
 
-## Deploy on Vercel
+## Pendientes / siguientes pasos recomendados
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Confirmar si la dirección actual de la empresa es la definitiva.
+2. Agregar íconos de TikTok y YouTube si también deben aparecer en la interfaz.
+3. Conectar el formulario de contacto a un backend real, API o servicio de correo.
+4. Hacer una revisión visual final responsive.
+5. Revisar SEO, metadata y preparación para deploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Punto en el que se está dejando
+
+El proyecto se está dejando en una etapa donde:
+
+- la estructura principal ya está definida
+- la dirección visual ya está establecida
+- el contenido del negocio ya está integrado
+- las interacciones de servicios ya funcionan
+- los enlaces de contacto y redes ya están conectados
+
+Esto significa que lo siguiente es principalmente **pulido visual, integraciones faltantes y preparación para producción**.
+
+## Documentación adicional
+
+Para un contexto más completo del estado del proyecto, revisar:
+
+- `PROJECT_DOCUMENTATION.md`

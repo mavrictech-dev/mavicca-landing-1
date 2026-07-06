@@ -8,10 +8,14 @@ export const siteContent = {
   hero: {
     eyebrow: "Consultoría y gestión ambiental",
     title: "Soluciones ambientales integrales para operaciones que deben cumplir, sostenerse y crecer con responsabilidad.",
-    description:
-      "Acompañamos a organizaciones públicas y privadas con gestión de residuos, monitoreos, instrumentos ambientales, cumplimiento legal, gestión social y capacitación especializada.",
     primaryCta: "Ver servicios",
     secondaryCta: "Solicitar asesoría",
+    stats: [
+      { value: "+150", label: "Proyectos realizados" },
+      { value: "+80", label: "Empresas asesoradas" },
+      { value: "+10", label: "Años de experiencia" },
+      { value: "100%", label: "Compromiso ambiental" },
+    ],
   },
   about: {
     eyebrow: "Consultoría con evidencia técnica",
@@ -229,11 +233,11 @@ export const siteContent = {
     eyebrow: "Hagamos sostenible tu operación",
     title: "Contáctanos",
     description:
-      "Atendemos requerimientos para empresas del sector industrial, minero, energético, agroindustrial y gobiernos locales que necesitan respaldo técnico en cumplimiento y sostenibilidad.",
-    sectors: ["Industrial", "Minero", "Energético", "Agroindustrial", "Gobiernos locales"],
+      "Atendemos requerimientos para empresas del sector público y privado.",
+    sectors: ["Hidrocarburos", "Pesquero", "Industria", "Residuos sólidos", "Minería", "Construcción", "Salud"],
     email: "comercial@mavicca.com",
     phone: "+51 984 401 703",
-    address: "Av. Ambiental 123, Lima — Perú",
+    address: "Jr. Lambayeque 369 / Piura",
     whatsappUrl: "https://wa.me/51984401703",
   },
 } as const;

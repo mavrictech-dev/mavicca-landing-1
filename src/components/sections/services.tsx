@@ -13,9 +13,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
-  ClipboardList,
   FileCheck2,
-  FileText,
   GraduationCap,
   Handshake,
   Leaf,
@@ -67,9 +65,6 @@ function ServiceDialog({ service, onClose }: ServiceDialogProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
   const Icon = serviceIcons[service.icon];
-  const splitIndex = Math.ceil(service.bullets.length / 2);
-  const includedItems = service.bullets.slice(0, splitIndex);
-  const deliverableItems = service.bullets.slice(splitIndex);
 
   useEffect(() => {
     previousFocusedElementRef.current = document.activeElement as HTMLElement | null;
@@ -150,50 +145,26 @@ function ServiceDialog({ service, onClose }: ServiceDialogProps) {
 
           <div className="my-8 h-px bg-emerald-100" />
 
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <h4 className="flex items-center gap-3 text-lg font-black text-[#064118]">
-                <ClipboardList className="size-5 text-[#2f7d15]" aria-hidden="true" />
-                ¿Qué incluye?
-              </h4>
+          <div>
+            <h4 className="flex items-center gap-3 text-lg font-black text-[#064118]">
+              <CheckCircle2 className="size-5 text-[#2f7d15]" aria-hidden="true" />
+              Servicios que realizamos
+            </h4>
 
-              <ul className="mt-5 space-y-4">
-                {includedItems.map((item, index) => (
-                  <motion.li
-                    key={item}
-                    className="flex gap-3 text-sm leading-6 text-slate-700"
-                    initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-                    animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? undefined : { delay: 0.04 * index, duration: 0.26 }}
-                  >
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#2f7d15]" aria-hidden="true" />
-                    <span>{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="border-emerald-100 md:border-l md:pl-8">
-              <h4 className="flex items-center gap-3 text-lg font-black text-[#064118]">
-                <FileText className="size-5 text-[#2f7d15]" aria-hidden="true" />
-                Entregables
-              </h4>
-
-              <ul className="mt-5 space-y-4">
-                {deliverableItems.map((item, index) => (
-                  <motion.li
-                    key={item}
-                    className="flex gap-3 text-sm leading-6 text-slate-700"
-                    initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-                    animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? undefined : { delay: 0.04 * index, duration: 0.26 }}
-                  >
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#2f7d15]" aria-hidden="true" />
-                    <span>{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+            <ul className="mt-5 grid gap-4 md:grid-cols-2 md:gap-x-8 md:gap-y-5">
+              {service.bullets.map((item, index) => (
+                <motion.li
+                  key={item}
+                  className="flex gap-3 rounded-2xl border border-emerald-100/90 bg-emerald-50/35 px-4 py-3 text-sm leading-6 text-slate-700"
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
+                  animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                  transition={shouldReduceMotion ? undefined : { delay: 0.03 * index, duration: 0.26 }}
+                >
+                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#2f7d15]" aria-hidden="true" />
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
           </div>
         </div>
       </motion.article>

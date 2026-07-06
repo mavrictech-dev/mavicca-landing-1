@@ -133,15 +133,20 @@ export function ContactSection() {
             </Reveal>
 
             <Reveal delay={0.26}>
-              <div className="flex flex-wrap gap-3">
+              <div className="space-y-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7d15]">
+                  Sectores que atendemos
+                </p>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {contact.sectors.map((sector) => (
-                  <span
+                  <div
                     key={sector}
-                    className="rounded-full border border-emerald-100 bg-white/88 px-4 py-2 text-sm font-semibold text-[#064118] shadow-sm shadow-green-950/5"
+                    className="rounded-lg border border-emerald-100 bg-white/90 px-4 py-3 text-sm font-bold text-[#064118] shadow-sm shadow-green-950/5 ring-1 ring-white/70"
                   >
                     {sector}
-                  </span>
+                  </div>
                 ))}
+                </div>
               </div>
             </Reveal>
           </div>

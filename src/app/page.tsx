@@ -1,4 +1,5 @@
 ﻿import { AmbientFallingLeaves } from "@/components/ambient-falling-leaves";
+import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { FooterOrganicPattern } from "@/components/footer-organic-pattern";
 import { SocialLinks } from "@/components/social-links";
 import { AboutSection } from "@/components/sections/about";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#fbfdf8] text-[#064118]">
       <Header />
+      <FloatingWhatsAppButton />
       <AmbientFallingLeaves />
       <main>
         <HeroSection />
