@@ -1,6 +1,7 @@
 ﻿import { AmbientFallingLeaves } from "@/components/ambient-falling-leaves";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { FooterOrganicPattern } from "@/components/footer-organic-pattern";
+import { SectionHeadingDivider } from "@/components/section-heading-divider";
 import { SocialLinks } from "@/components/social-links";
 import { AboutSection } from "@/components/sections/about";
 import { ContactSection } from "@/components/sections/contact";
@@ -16,8 +17,11 @@ export default function Home() {
       <AmbientFallingLeaves />
       <main>
         <HeroSection />
+        <SectionHeadingDivider className="relative z-20 bg-[#fbfdf8] py-3 sm:py-3.5" lineClassName="w-24 sm:w-32" />
         <AboutSection />
+        <SectionHeadingDivider className="relative z-20 bg-[#fbfdf8] py-3 sm:py-3.5" lineClassName="w-24 sm:w-32" />
         <ServicesSection />
+        <SectionHeadingDivider className="relative z-20 bg-[#fbfdf8] py-3 sm:py-3.5" lineClassName="w-24 sm:w-32" />
         <ContactSection />
       </main>
 

@@ -92,7 +92,7 @@ export function ContactSection() {
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden bg-[#fbfdf8] px-6 pb-10 pt-20 lg:px-8 lg:pb-12 lg:pt-24"
+      className="relative overflow-hidden bg-[#fbfdf8] px-6 pb-5 pt-10 lg:px-8 lg:pb-6 lg:pt-12"
     >
       <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-emerald-100/60 blur-3xl" />
       <div className="absolute bottom-8 right-8 h-80 w-80 rounded-full bg-cyan-100/70 blur-3xl" />
@@ -112,27 +112,18 @@ export function ContactSection() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="flex flex-col gap-5 xl:flex-row xl:items-center">
-                <h2 className="text-[clamp(2rem,3.1vw,3.3rem)] font-black uppercase leading-none tracking-[-0.045em] text-[#064118]">
-                  {contact.title}
-                </h2>
-                <div className="flex items-center gap-4 text-[#064118] xl:flex-1" aria-hidden="true">
-                  <span className="h-0.5 w-20 bg-current xl:w-full" />
-                  <Leaf className="size-8 shrink-0 fill-current/10" strokeWidth={1.8} />
-                  <span className="h-0.5 w-20 bg-current xl:w-full" />
-                </div>
-              </div>
+              <h2 className="text-[clamp(2rem,3.1vw,3.3rem)] font-black uppercase leading-none tracking-[-0.045em] text-[#064118]">
+                {contact.title}
+              </h2>
             </Reveal>
-            <Reveal delay={0.14}>
-              <div className="h-1.5 w-24 rounded-full bg-[#47a51f]" />
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="max-w-md text-[clamp(0.98rem,1.2vw,1.15rem)] font-medium leading-8 text-emerald-950/78">
+
+            <Reveal delay={0.16}>
+              <p className="mt-5 max-w-md text-[clamp(0.98rem,1.2vw,1.15rem)] font-medium leading-8 text-emerald-950/78">
                 {contact.description}
               </p>
             </Reveal>
 
-            <Reveal delay={0.26}>
+            <Reveal delay={0.26} className="hidden">
               <div className="space-y-4">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7d15]">
                   Sectores que atendemos

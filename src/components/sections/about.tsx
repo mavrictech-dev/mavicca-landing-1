@@ -1,6 +1,8 @@
 "use client";
 
-import { Building2, Flag, Leaf, ShieldCheck, Users } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Building2, Flag, Leaf, ShieldCheck, Users, X } from "lucide-react";
 import { MotionArticle, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { SectionOrganicPattern } from "@/components/section-organic-pattern";
 import { siteContent } from "@/data/site";
@@ -12,18 +14,50 @@ const pillarIcons = {
   sectors: Building2,
 } as const;
 
+const teamImages = [
+  { src: "/mavicca-1.jpeg", alt: "Equipo Mavicca en supervisión ambiental de campo" },
+  { src: "/mavicca-2.jpeg", alt: "Profesional de Mavicca durante capacitación técnica" },
+  { src: "/mavicca-3.jpeg", alt: "Sesión de capacitación ambiental de Mavicca" },
+  { src: "/mavicca-4.jpeg", alt: "Equipo multidisciplinario de Mavicca en operación" },
+  { src: "/mavicca-5.jpeg", alt: "Equipo Mavicca junto a material institucional" },
+] as const;
+
 export function AboutSection() {
   const { about } = siteContent;
+  const [selectedImage, setSelectedImage] = useState<(typeof teamImages)[number] | null>(null);
+
+  useEffect(() => {
+    if (!selectedImage) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage]);
 
   return (
-    <section
-      id="quienes-somos"
-      className="relative isolate overflow-hidden bg-[#fbfdf8] pb-20 pt-20 lg:pb-24"
-    >
+    <>
+      <section
+        id="quienes-somos"
+        className="relative isolate overflow-hidden bg-[#fbfdf8] pb-10 pt-10 lg:pb-12"
+      >
         <div className="absolute left-8 top-28 -z-10 h-64 w-64 rounded-full bg-emerald-100/60 blur-3xl" />
         <SectionOrganicPattern density="soft" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
             <div className="max-w-3xl space-y-6">
               <Reveal>
@@ -39,7 +73,7 @@ export function AboutSection() {
                 </h2>
               </Reveal>
 
-              <Reveal delay={0.16} className="space-y-4">
+              <Reveal delay={0.16} className="mt-5 space-y-4">
                 {about.fullStory.map((paragraph) => (
                   <p
                     key={paragraph}
@@ -82,7 +116,37 @@ export function AboutSection() {
             </Reveal>
           </div>
 
-          <div className="pt-14">
+          <Reveal delay={0.24} className="pt-8">
+            <div className="relative rounded-[1.55rem] border border-emerald-100 bg-white/82 px-4 pb-5 pt-4 shadow-xl shadow-green-950/10 backdrop-blur-md sm:px-5">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-[#064118]">
+                <Leaf className="size-4" aria-hidden="true" />
+                Nuestro equipo en acción
+              </div>
+
+              <div
+                className="mt-4 flex gap-2.5 overflow-x-auto scroll-smooth pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {teamImages.map((image) => (
+                  <button
+                    type="button"
+                    key={image.src}
+                    onClick={() => setSelectedImage(image)}
+                    className="group relative h-34 min-w-[13rem] flex-1 cursor-zoom-in overflow-hidden rounded-xl border border-emerald-100 bg-emerald-50 shadow-sm shadow-green-950/5 transition duration-300 hover:z-10 hover:scale-[1.04] hover:shadow-xl hover:shadow-green-950/18 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4 sm:h-36 sm:min-w-[15rem] lg:min-w-0"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 32vw, 18vw"
+                      className="object-cover transition duration-500 ease-out group-hover:scale-110"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="pt-6">
             <Stagger className="grid gap-5 rounded-[1.4rem] border border-emerald-100 bg-white/88 px-6 py-6 shadow-xl shadow-green-950/10 backdrop-blur-md sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
               {about.pillars.map((pillar, index) => {
                 const Icon = pillarIcons[pillar.icon];
@@ -106,6 +170,40 @@ export function AboutSection() {
             </Stagger>
           </div>
         </div>
-    </section>
+      </section>
+
+      {selectedImage ? (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagen ampliada del equipo Mavicca"
+          className="fixed inset-0 z-80 flex items-center justify-center bg-[#02180b]/75 p-4 backdrop-blur-md"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedImage(null);
+            }
+          }}
+        >
+          <button
+            type="button"
+            aria-label="Cerrar imagen ampliada"
+            onClick={() => setSelectedImage(null)}
+            className="absolute right-4 top-4 z-20 grid size-11 place-items-center rounded-full border border-white/20 bg-white/92 text-[#064118] shadow-xl shadow-green-950/25 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4 focus-visible:ring-offset-[#02180b]"
+          >
+            <X className="size-5" strokeWidth={2.5} aria-hidden="true" />
+          </button>
+
+          <div className="relative h-[min(78vh,46rem)] w-full max-w-6xl overflow-hidden rounded-3xl border border-white/20 bg-white/8 shadow-[0_32px_110px_rgba(0,0,0,0.42)]">
+            <Image
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              fill
+              sizes="90vw"
+              className="object-contain"
+            />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }

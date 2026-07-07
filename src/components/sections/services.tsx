@@ -16,7 +16,6 @@ import {
   FileCheck2,
   GraduationCap,
   Handshake,
-  Leaf,
   Recycle,
   Scale,
   ScrollText,
@@ -245,7 +244,7 @@ export function ServicesSection() {
 
   return (
     <>
-      <section id="servicios" className="relative overflow-hidden bg-[#fbfdf8] px-6 pb-20 pt-10 lg:px-8 lg:pb-24 lg:pt-12">
+      <section id="servicios" className="relative overflow-hidden bg-[#fbfdf8] px-6 pb-10 pt-5 lg:px-8 lg:pb-12 lg:pt-6">
         <div className="absolute left-1/2 top-18 -z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-lime-200/30 blur-3xl" />
         <SectionOrganicPattern density="medium" />
 
@@ -258,14 +257,6 @@ export function ServicesSection() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="mt-6 flex items-center justify-center gap-4 text-[#064118]">
-                <span className="h-0.5 w-24 bg-current" />
-                <Leaf className="size-8 fill-current/10" strokeWidth={1.8} aria-hidden="true" />
-                <span className="h-0.5 w-24 bg-current" />
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.16}>
               <p className="mx-auto mt-6 max-w-3xl text-[clamp(0.98rem,1.25vw,1.15rem)] font-medium leading-8 text-slate-700">
                 {sectionDescription}
               </p>

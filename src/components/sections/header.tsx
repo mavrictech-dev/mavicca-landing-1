@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import { siteContent } from "@/data/site";
 
 export function Header() {
@@ -10,38 +11,27 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-emerald-100/80 bg-[#fbfdf8]/78 shadow-lg shadow-green-950/10 backdrop-blur-2xl">
-      <div className="flex h-16 w-full items-center justify-between px-6 sm:h-18 sm:px-10 lg:h-20 lg:px-40">
+      <div className="relative flex h-16 w-full items-center justify-between px-10 sm:h-18 sm:px-20 lg:h-20 lg:px-40">
         <a
           href="#inicio"
           aria-label={`${siteContent.companyName} - volver al inicio`}
+          onClick={() => setIsMobileMenuOpen(false)}
           className="flex shrink-0 items-center outline-none transition duration-300 hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-4"
         >
           <Image
-            src="/logo-final.png"
+            src="/logo-final-mavicca.png"
             alt={siteContent.companyName}
-            width={1515}
-            height={502}
+            width={1726}
+            height={544}
             priority
-            className="h-20 w-auto object-contain sm:h-22 lg:h-24"
+            className="h-15 w-auto object-contain sm:h-17 lg:h-19"
           />
         </a>
 
-        <button
-          type="button"
-          onClick={() => setIsMobileMenuOpen((current) => !current)}
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          className="inline-flex size-11 items-center justify-center rounded-xl border border-emerald-100 bg-white text-[#064118] shadow-sm shadow-green-950/5 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-2 lg:hidden"
+        <nav
+          aria-label="Navegacion principal"
+          className="ml-auto hidden items-center gap-7 lg:flex xl:gap-10"
         >
-          <div className="flex w-5 flex-col gap-1.5">
-            <span className={`h-0.5 w-full rounded-full bg-current transition ${isMobileMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`h-0.5 w-full rounded-full bg-current transition ${isMobileMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`h-0.5 w-full rounded-full bg-current transition ${isMobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
-          </div>
-        </button>
-
-        <nav aria-label="Navegación principal" className="hidden items-center gap-7 lg:flex xl:gap-10">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -53,22 +43,28 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href="https://wa.me/51984401703"
-          target="_blank"
-          rel="noreferrer"
-          className="group hidden items-center gap-2 rounded-full bg-[#47a51f] px-4 py-2 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#3d8f1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9ed87a] focus-visible:ring-offset-4 sm:inline-flex lg:hidden"
+        <button
+          type="button"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+          onClick={() => setIsMobileMenuOpen((current) => !current)}
+          className="ml-auto inline-flex size-11 items-center justify-center rounded-xl border border-emerald-100 bg-white/92 text-[#064118] shadow-sm shadow-green-950/10 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a51f] focus-visible:ring-offset-2 lg:hidden"
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 transition duration-300 group-hover:rotate-12" fill="currentColor">
-            <path d="M12.04 2a9.88 9.88 0 0 0-8.5 14.93L2.4 21.1l4.28-1.12A9.87 9.87 0 1 0 12.04 2Zm0 1.8a8.07 8.07 0 1 1-4.1 15.02l-.3-.18-2.54.66.68-2.47-.2-.32A8.08 8.08 0 0 1 12.04 3.8Zm-3.45 3.95c-.17 0-.45.06-.68.31-.23.26-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.84 4.45 3.87 2.2.87 2.65.7 3.13.66.48-.04 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.17-.5-.3-.26-.13-1.55-.77-1.79-.85-.24-.09-.42-.13-.59.13-.17.26-.68.85-.83 1.03-.15.17-.31.2-.57.06-.26-.13-1.1-.4-2.1-1.3-.78-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.11.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.46-.06-.13-.59-1.42-.8-1.94-.22-.5-.43-.43-.59-.44h-.5Z" />
-          </svg>
-          WhatsApp
-        </a>
+          {isMobileMenuOpen ? (
+            <X className="size-5" strokeWidth={2.6} aria-hidden="true" />
+          ) : (
+            <Menu className="size-5" strokeWidth={2.6} aria-hidden="true" />
+          )}
+        </button>
       </div>
 
       {isMobileMenuOpen ? (
-        <div id="mobile-navigation" className="border-t border-emerald-100 bg-[#fbfdf8]/95 px-6 py-4 shadow-lg shadow-green-950/5 backdrop-blur-2xl lg:hidden">
-          <nav aria-label="Navegación móvil" className="flex flex-col gap-2">
+        <div
+          id="mobile-navigation"
+          className="border-t border-emerald-100 bg-[#fbfdf8]/96 px-6 py-4 shadow-lg shadow-green-950/8 backdrop-blur-2xl lg:hidden"
+        >
+          <nav aria-label="Navegacion movil" className="mx-auto flex max-w-sm flex-col gap-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
