@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://mavicca.com";
+const siteUrl = "https://mavicca-landing1.netlify.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

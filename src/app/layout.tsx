@@ -4,7 +4,7 @@ import "@fontsource-variable/onest/wght.css";
 import "./globals.css";
 import { siteContent } from "@/data/site";
 
-const siteUrl = "https://mavicca.com";
+const siteUrl = "https://mavicca-landing1.netlify.app";
 const seoDescription =
   "Consultoría y gestión ambiental en Perú: monitoreos, residuos, SIGERSOL, IGA, cumplimiento normativo, permisos y capacitación especializada.";
 
